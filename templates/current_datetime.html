@@ -1,19 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-  <meta charset="UTF-8">
-  <title></title>
-  <style>
-		h1{
-			font-size: 2.5em;
-		}
-  </style>
-</head>
-<body>
-{% include 'hello.html' %}
-	<h1>
-		Its now {{ current_time }}
-	</h1>
-created by {{ name }}
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}
+	The current time
+{% endblock %}
+
+{% block content %}
+
+	<p>It is now {{ current_time }}.</p>
+
+{% endblock %}
