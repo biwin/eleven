@@ -21,5 +21,5 @@ urlpatterns = patterns('',
     (r'^hello/$', hello),
     (r'^$', home),
     (r'^time/$', current_datetime ),
-	(r'^time/plus/(\d{1,2})/$', hours_ahead ),
+    (r'^time/plus/(\d{1,2})/$', hours_ahead ),
 )
