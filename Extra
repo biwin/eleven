@@ -1,0 +1,45 @@
+forloop
+
+forloop.counter
+	An Integer representing the number of times the loop has been entered. Index is 1.
+
+	{% for item in todo_list %}
+		<p>{{ forloop.counter }}: {{ item }}</p>
+	{% endfor %}
+
+forloop.counter0
+	Zero indexed counter.
+
+forloop.revcounter
+	Reverse counter that represent the remaining items in the loop. first item is the number of items in the list. the last item is set to 1.
+
+forloop.revcounter0
+	Reverse for loop counter. the last number is 0 and first is (total number - 1)
+
+
+forloop.first
+Set True if looping first time.
+
+	{% for object in objects %}
+		{% if forloop.first %}<li class="first">{% else %}<li>{% endif %}
+		{{ object }}
+		</li>
+	{% endfor %}
+
+forloop.last
+set true when looping the last time.
+
+forloop.parentloop
+true if looping through the parent loop in case of nested loops.
+
+{% for country in countries %}
+	<table>
+	{% for city in country.city_list %}
+		<tr>
+		<td>Country #{{ forloop.parentloop.counter }}</td>
+		<td>City #{{ forloop.counter }}</td>
+		<td>{{ city }}</td>
+		</tr>
+	{% endfor %}
+	</table>
+{% endfor %}
