@@ -23,6 +23,7 @@ def home(request):
 # def current_datetime(request):
 # 	now = datetime.datetime.now()
 # 	t = get_template('current_datetime.html')
+# (or)	t = get_template('subdir/current_datetime.html')
 # 	html = t.render(Context({'current_time': now}))
 # 	return HttpResponse(html)
 
@@ -31,6 +32,9 @@ def current_datetime(request):
 	current_time = datetime.datetime.now()
 	name = "biwin"
 	return render_to_response('current_datetime.html', locals())
+# (or) return render_to_response('subdir/current_datetime.html', locals())
+
+
 
 def hours_ahead(request, offset):
 	try:
