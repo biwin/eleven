@@ -35,7 +35,6 @@ def current_datetime(request):
 # (or) return render_to_response('subdir/current_datetime.html', locals())
 
 
-
 def hours_ahead(request, offset):
 	try:
 		offset = int(offset)
@@ -44,3 +43,14 @@ def hours_ahead(request, offset):
 
 	date_time = datetime.datetime.now() + datetime.timedelta(hours=offset)
 	return render_to_response('hours_ahead.html', locals())
+
+
+def test_http(request):
+	# hu = request.META.get('HTTP_USER_AGENT', 'unknown')
+	# return HttpResponse(hu)
+	values = request.META.items()
+	values.sort()
+	html = []
+	for k, v in values:
+		html.append('<tr><td>%s</td><td>%s</td></tr>' % (k, v))
+	return HttpResponse('<table>%s</table>' % '\n'.join(html))
