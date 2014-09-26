@@ -10,8 +10,13 @@
 		<input type="text" name="q"/>
 		<input type="submit" value="Search"/>
 	</form>
-	{% if error %}
-		<p style="color:red"> There's an Errr!!<br/> Enter a search term less than 20 characters</p>
+	{% if errors %}
+
+		<ul>
+			{% for error in errors %}
+			<li style="color:red">{{ error }}</li>
+			{% endfor %}
+		</ul>
 	{% endif %}
 </body>
 </html>
