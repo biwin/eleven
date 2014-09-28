@@ -95,3 +95,4 @@ def view_2(request):
 	c = RequestContext(request, {'message': 'happy day from view_2'}, processors=[processor])
 	html = t.render(c)
 	return HttpResponse(html)
+

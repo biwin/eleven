@@ -6,7 +6,20 @@
 </head>
 <body>
 <h1>This is view 1</h1>
-<h2>Your name is {{ name }}</h2>
+<h2>Your name is {{ name|safe }}</h2>
+{% comment %}
+	disables auto html escaping ...
+	<h2>Your name is {{ name|safe }}</h2>
+
+	or
+		{% autoescape off %}
+		Hello {{ name }}
+		{% endautoescape %}
+
+{% endcomment %}
+
+
+
 <h2>You are {{ user }}</h2>
 <h2>you are from {{ ip_address }}</h2>
 <h3>We have a message for you!!!</h3>
