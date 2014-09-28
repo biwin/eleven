@@ -19,6 +19,11 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
     (r'^hello/$', hello),
     (r'^$', home),
+    (r'^view1/$', view_1),
+    (r'^view2/$', view_2),
+
+
+
     (r'^time/$', current_datetime),
     (r'^time/plus/(\d{1,2})/$', hours_ahead),
     (r'^http/$', test_http),

@@ -1,5 +1,5 @@
 from django.http import HttpResponse, Http404
-from django.template import Context
+from django.template import Context, loader
 from django.template.loader import get_template
 from django.shortcuts import render_to_response
 import datetime
@@ -12,9 +12,10 @@ def hello(request):
 def home(request):
 	return HttpResponse("hey this is home!!")
 
+
 # traditional way
 # def current_datetime(request):
-# 	now = datetime.datetime.now()
+# now = datetime.datetime.now()
 # 	text = Template("it is now {{ current_time }} ")
 # 	html = text.render(Context({'current_time' : now}))
 # 	return HttpResponse(html)
@@ -32,6 +33,8 @@ def current_datetime(request):
 	current_time = datetime.datetime.now()
 	name = "biwin"
 	return render_to_response('current_datetime.html', locals())
+
+
 # (or) return render_to_response('subdir/current_datetime.html', locals())
 
 
@@ -54,3 +57,17 @@ def test_http(request):
 	for k, v in values:
 		html.append('<tr><td>%s</td><td>%s</td></tr>' % (k, v))
 	return HttpResponse('<table>%s</table>' % '\n'.join(html))
+
+
+def view_1(request):
+	t = loader.get_template('advancedtemplates/template1.html')
+	c = Context({'name': 'myName', 'user': request.user, 'ip_address': request.META['REMOTE_ADDR'], 'message': 'Hi from the view_1()'})
+	html = t.render(c)
+	return HttpResponse(html)
+
+
+def view_2(request):
+	t = loader.get_template('advancedtemplates/template2.html')
+	c = Context({'name': 'myName'})
+	html = t.render(c)
+	return HttpResponse(html)
