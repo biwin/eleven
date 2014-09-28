@@ -1,8 +1,8 @@
-from django.http import HttpResponse, Http404
-from django.template import Context, loader
-from django.template.loader import get_template
-from django.shortcuts import render_to_response
 import datetime
+
+from django.http import HttpResponse, Http404
+from django.template import Context, loader, RequestContext
+from django.shortcuts import render_to_response
 
 
 def hello(request):
@@ -59,15 +59,24 @@ def test_http(request):
 	return HttpResponse('<table>%s</table>' % '\n'.join(html))
 
 
+def processor(request):
+	""" A Context processor to provide 'name', 'user' and 'ip_address """
+	return {
+		'name': 'myName',
+		'user': request.user,
+		'ip_address': request.META['REMOTE_ADDR']
+	}
+
+
 def view_1(request):
 	t = loader.get_template('advancedtemplates/template1.html')
-	c = Context({'name': 'myName', 'user': request.user, 'ip_address': request.META['REMOTE_ADDR'], 'message': 'Hi from the view_1()'})
+	c = RequestContext(request, {'message': 'happy day from view_1'}, processors=[processor])
 	html = t.render(c)
 	return HttpResponse(html)
 
 
 def view_2(request):
 	t = loader.get_template('advancedtemplates/template2.html')
-	c = Context({'name': 'myName'})
+	c = RequestContext(request, {'message': 'happy day from view_2'}, processors=[processor])
 	html = t.render(c)
 	return HttpResponse(html)
