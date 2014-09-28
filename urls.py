@@ -17,10 +17,9 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     (r'^admin/', include(admin.site.urls)),
-
     (r'^hello/$', hello),
     (r'^$', home),
-    (r'^time/$', current_datetime ),
+    (r'^time/$', current_datetime),
     (r'^time/plus/(\d{1,2})/$', hours_ahead),
     (r'^http/$', test_http),
     (r'search-form/$', views.search_form),
