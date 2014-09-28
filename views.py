@@ -68,14 +68,29 @@ def processor(request):
 	}
 
 
+# def view_1(request):
+# 	t = loader.get_template('advancedtemplates/template1.html')
+# 	c = RequestContext(request, {'message': 'happy day from view_1'}, processors=[processor])
+# 	html = t.render(c)
+# 	return HttpResponse(html)
+#
+#
+# def view_2(request):
+# 	t = loader.get_template('advancedtemplates/template2.html')
+# 	c = RequestContext(request, {'message': 'happy day from view_2'}, processors=[processor])
+# 	html = t.render(c)
+# 	return HttpResponse(html)
+
+
+# using render_to_response()
+
 def view_1(request):
-	t = loader.get_template('advancedtemplates/template1.html')
-	c = RequestContext(request, {'message': 'happy day from view_1'}, processors=[processor])
-	html = t.render(c)
-	return HttpResponse(html)
+	""" use render to response to render the html """
+	return render_to_response('advancedtemplates/template1.html', {'message': 'happy day from view_1'}, context_instance=RequestContext(request, processors=[processor]))
 
 
 def view_2(request):
+	""" using httpresponse to render the html """
 	t = loader.get_template('advancedtemplates/template2.html')
 	c = RequestContext(request, {'message': 'happy day from view_2'}, processors=[processor])
 	html = t.render(c)
