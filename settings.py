@@ -80,7 +80,3 @@ INSTALLED_APPS = (
     # 'mysite.article',
     'mysite.books',
 )
-
-TEMPLATE_CONTEXT_PROCESSORS = (
-
-)

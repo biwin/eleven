@@ -9,6 +9,10 @@ def hello(request):
 	return HttpResponse('Hello World!!')
 
 
+def thanks(request):
+	return HttpResponse('Thank You')
+
+
 def home(request):
 	return HttpResponse("hey this is home!!")
 

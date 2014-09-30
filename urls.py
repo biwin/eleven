@@ -1,7 +1,7 @@
 from django.conf.urls.defaults import *
 from mysite.views import *
 from mysite.books import views
-
+from mysite.contacts.views import *
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
@@ -29,4 +29,7 @@ urlpatterns = patterns('',
     (r'^http/$', test_http),
     (r'search-form/$', views.search_form),
     (r'search/$', views.search),
+
+    (r'contact/$', contact),
+    (r'thanks/$', thanks),
 )
